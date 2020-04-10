@@ -1,9 +1,12 @@
 var topk = {}
 
 $.get("http://localhost:8080/countries/cases?top=10", function(data){ drawTopCountries(data.Countries); });
+$.get("http://localhost:8080/countries/cases/aggregated?countries=ID,IN,SG&interval=daily", function(data){ 
+    drawLines(data.CountriesCases, "countries_growth_daily"); 
+});
 
-$.get("http://localhost:8080/countries/cases/aggregated?countries=ID,IN", function(data){ 
-    drawLines(data.CountriesCases); 
+$.get("http://localhost:8080/countries/cases/aggregated?countries=ID,IN,SG,Italy", function(data){ 
+    drawLines(data.CountriesCases, "countries_growth_weekly"); 
 });
 
 function drawTopCountries(data) {
@@ -32,7 +35,7 @@ function drawTopCountries(data) {
     });
 }
 
-function drawLines(data) {
+function drawLines(data, canvasId) {
     var labels = $(data).map(function() { return this.Country }).get();
     var maxX = 0;
     var dataSet = $(data).map(
@@ -45,7 +48,7 @@ function drawLines(data) {
     ).get();
     ylabels = _.range(maxX);
     console.log(maxX, ylabels)
-    var chart = new Chart(document.getElementById('countries_growth'), {
+    var chart = new Chart(document.getElementById(canvasId), {
         type: 'line',
         data: {
             labels: ylabels,
