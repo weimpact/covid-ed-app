@@ -4,10 +4,11 @@ import "./Dashboard.css";
 import _ from "lodash";
 import { drawBarChart, drawLineChart } from "./chart.js";
 import Paper from "@material-ui/core/Paper";
+import config from "./config.js";
 
 class Dashboard extends Component {
   loadTopCountriesData = (id, drawFn) => () => {
-    var url = "http://covid-ed.herokuapp.com/countries/cases?top=10";
+    var url = config.backendApi + "/countries/cases?top=10";
 
     fetch(url)
       .then((response) => response.json())
@@ -15,7 +16,11 @@ class Dashboard extends Component {
         (data) => {
           var values = data.Countries.map((d, k) => d.TotalConfirmed);
           var labels = data.Countries.map((d, k) => d.Country);
-          var res = { values: values, labels: labels };
+          var res = {
+            title: "countries total cases (top)",
+            values: values,
+            labels: labels,
+          };
           console.log(id, res, "!!", document.getElementById("root"));
           drawFn(id, res);
         },
@@ -28,7 +33,8 @@ class Dashboard extends Component {
 
   loadCountriesGrowth = (id, drawFn) => () => {
     var url =
-      "http://covid-ed.herokuapp.com/countries/cases/aggregated?countries=IN,ID&interval=weekly";
+      config.backendApi +
+      "/countries/cases/aggregated?countries=IN,ID&interval=weekly";
 
     fetch(url)
       .then((response) => response.json())
@@ -39,7 +45,11 @@ class Dashboard extends Component {
           var datasets = data.Countries.map((d, k) => {
             return { data: d.Cases, label: d.Country, borderColor: "#3e95cd" };
           });
-          var res = { datasets: datasets, labels: labels };
+          var res = {
+            title: "countries growth",
+            datasets: datasets,
+            labels: labels,
+          };
           drawFn(id, res);
         },
 
@@ -91,11 +101,9 @@ class Canvas extends Component {
   render() {
     return (
       <div className="col">
-      <Paper variant="outlined">
-        {" "}
-        {this.state.description}
-        <canvas id={this.state.id}></canvas>
-      </Paper>
+        <Paper variant="outlined">
+          <canvas id={this.state.id}></canvas>
+        </Paper>
       </div>
     );
   }

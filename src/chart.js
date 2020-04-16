@@ -31,7 +31,7 @@ function drawLineChart(id, data) {
     options: {
       title: {
         display: true,
-        text: data.text,
+        text: data.title,
       },
     },
   });

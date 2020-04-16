@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Fact, Myth } from "./Fact.js";
-import './FactsMyths.css'
+import "./FactsMyths.css";
 
+import config from "./config.js";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -19,22 +20,22 @@ class FactsMyths extends Component {
     };
   }
 
-  fetchFactsMyths()  {
-    var url = "http://covid-ed.herokuapp.com/facts_myths";
+  fetchFactsMyths() {
+    var url = config.backendApi + "/facts_myths";
 
     fetch(url)
       .then((response) => response.json())
       .then(
         (data) => {
-          console.log("received......", data)
-          this.setState({ rows: data })
+          console.log("received......", data);
+          this.setState({ rows: data });
         },
 
         (error) => {
           console.log("error! fetching api" + url + " " + error);
         }
       );
-  };
+  }
 
   componentDidMount() {
     this.fetchFactsMyths();
@@ -44,25 +45,29 @@ class FactsMyths extends Component {
     return (
       <div className="container">
         <Paper className="facts_table_paper">
-        <TableContainer className={Paper}>
-        <Table className="facts_myths_table" stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Facts</TableCell>
-                <TableCell align="left">Myths</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {this.state.rows.map((row) => (
-                <TableRow key={row.name}>
-                  <Fact {...row.fact} />
-                  <Myth {...row.myth} />
+          <TableContainer className={Paper}>
+            <Table
+              className="facts_myths_table"
+              stickyHeader
+              aria-label="sticky table"
+            >
+              <TableHead>
+                <TableRow>
+                  <TableCell>Facts</TableCell>
+                  <TableCell align="left">Myths</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
+              </TableHead>
+              <TableBody>
+                {this.state.rows.map((row) => (
+                  <TableRow key={row.name}>
+                    <Fact {...row.fact} />
+                    <Myth {...row.myth} />
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
       </div>
     );
   }

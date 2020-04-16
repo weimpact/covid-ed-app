@@ -6,15 +6,26 @@ const Fact = (props) => {
     <TableCell component="th" scope="row">
       <div className="title">{props.title}</div>
       <div className="description">{props.description}</div>
+      <ul>
+        {props.articles
+          ? props.articles.map((art) => (
+              <li>
+                <a href="{art.url}">{art.title}</a>
+              </li>
+            ))
+          : ""}
+      </ul>
     </TableCell>
   );
 };
 
 const Myth = (props) => {
-  return <TableCell align="left">
+  return (
+    <TableCell align="left">
       <div className="title">{props.title}</div>
       <div className="description">{props.description}</div>
-    </TableCell>;
+    </TableCell>
+  );
 };
 
 export { Fact, Myth };
