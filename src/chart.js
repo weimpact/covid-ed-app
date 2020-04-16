@@ -1,7 +1,6 @@
 var Chart = require('chart.js')
 
 function drawBarChart(id, data) {
-  console.log(id, data)
   var ctx = document.getElementById(id)
   var chart = new Chart(ctx, {
     type: 'bar',
@@ -19,5 +18,22 @@ function drawBarChart(id, data) {
   });
 }
 
-export {drawBarChart};
+function drawLineChart(id, data) {
+    console.log(data)
+    var chart = new Chart(document.getElementById(id), {
+        type: 'line',
+        data: {
+            labels: data.labels,
+            datasets: data.datasets
+        },
+        options: {
+            title: {
+                display: true,
+                text: data.text
+            }
+        }
+    });
 
+}
+
+export {drawBarChart, drawLineChart};
