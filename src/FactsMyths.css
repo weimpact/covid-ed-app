@@ -1,0 +1,13 @@
+#facts_myths {
+  padding-top: 70px;
+  padding-bottom: 70px;
+
+}
+
+table  div.title {
+  font-size: large;
+}
+
+table  div.description {
+  font-size: small;
+}

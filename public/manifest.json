@@ -1,8 +1,7 @@
 {
   "short_name": "Covid Ed",
   "name": "aims to provide information about covid",
-  "icons": [
-  ],
+  "icons": [],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
