@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Fact, Myth } from "./Fact.js";
-import "./FactsMyths.css";
+import "./css/FactsMyths.css";
 
 import config from "./config.js";
 import Table from "@material-ui/core/Table";
@@ -27,7 +27,6 @@ class FactsMyths extends Component {
       .then((response) => response.json())
       .then(
         (data) => {
-          console.log("received......", data);
           this.setState({ rows: data });
         },
 
@@ -45,7 +44,7 @@ class FactsMyths extends Component {
     return (
       <div className="container">
         <Paper className="facts_table_paper">
-          <TableContainer className={Paper}>
+          <TableContainer className="table_container">
             <Table
               className="facts_myths_table"
               stickyHeader
@@ -58,8 +57,8 @@ class FactsMyths extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {this.state.rows.map((row) => (
-                  <TableRow key={row.name}>
+                {this.state.rows.map((row, i) => (
+                  <TableRow key={i}>
                     <Fact {...row.fact} />
                     <Myth {...row.myth} />
                   </TableRow>

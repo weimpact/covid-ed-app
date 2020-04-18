@@ -1,0 +1,17 @@
+.dashboard-row {
+  width: 100%;
+}
+
+.MuiPaper-root {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.countries_with_deaths {
+  height: 100%;
+  width: 100%;
+}
+
+.countries_with_deaths_desc {
+  color: black;
+}

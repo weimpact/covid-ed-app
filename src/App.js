@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import Typography from "@material-ui/core/Typography";
+import "./css/App.css";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@material-ui/core/Link";
 
@@ -17,9 +16,9 @@ class App extends Component {
     event.preventDefault();
     console.info("You clicked a breadcrumb.");
   }
-  renderBreadCrumb(link) {
+  renderBreadCrumb(link, i) {
     return (
-      <Link color="inherit" href="/" onClick={this.handleClick}>
+      <Link color="inherit" href="/" onClick={this.handleClick} key={i}>
         {link}
       </Link>
     );
@@ -30,7 +29,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <Breadcrumbs aria-label="breadcrumb">
-            {this.state.links.map((l) => this.renderBreadCrumb(l))}
+            {this.state.links.map((l, i) => this.renderBreadCrumb(l, i))}
           </Breadcrumbs>
         </header>
       </div>

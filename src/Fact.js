@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+
 import TableCell from "@material-ui/core/TableCell";
 
 const Fact = (props) => {
@@ -8,8 +9,8 @@ const Fact = (props) => {
       <div className="description">{props.description}</div>
       <ul>
         {props.articles
-          ? props.articles.map((art) => (
-              <li>
+          ? props.articles.map((art, i) => (
+              <li key={i}>
                 <a href="{art.url}">{art.title}</a>
               </li>
             ))

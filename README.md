@@ -10,3 +10,13 @@ https://github.com/tamino-martinius/contributions.taminomartinius.de/tree/master
 ```
 export $(cat process.env  | xargs) && npm start
 ```
+
+## Contribute
+
+run
+
+```
+npx prettier@2.0.4 . --write
+```
+
+before committing.
