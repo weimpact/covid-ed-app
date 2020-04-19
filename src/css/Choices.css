@@ -1,0 +1,9 @@
+.choices {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 200px;
+}
+
+.choices #choices-select {
+  margin-left: 10px;
+}

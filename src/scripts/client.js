@@ -40,4 +40,18 @@ function loadCountriesGrowth(callback) {
   };
 }
 
-export { loadCountriesData, loadCountriesGrowth };
+function loadLanguages(callback) {
+  var url = config.backendApi + "/languages";
+
+  fetch(url)
+    .then((response) => response.json())
+    .then(
+      (data) => callback(data),
+
+      (error) => {
+        console.log("error! fetching api" + url + " " + error);
+      }
+    );
+}
+
+export { loadCountriesData, loadCountriesGrowth, loadLanguages };
