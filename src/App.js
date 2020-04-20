@@ -16,6 +16,7 @@ class App extends Component {
         label: "",
         selected: "",
       },
+      languageChanged: this.languageChanged,
       pages: [
         {
           path: "/",
@@ -42,9 +43,16 @@ class App extends Component {
       var values = data.map((d) => {
         return { name: d.language, value: d.tag };
       });
+      console.log("heree???");
       currComp.setState({
         languages: { values: values, label: "Language:", selected: "en-US" },
       });
+    });
+  }
+
+  languageChanged(event) {
+    this.setState({
+      languages: { ...this.state.languages, selected: event.target.value },
     });
   }
 
@@ -64,11 +72,16 @@ class App extends Component {
             <Breadcrumbs aria-label="breadcrumb">
               {this.state.pages.map((l, i) => this.renderBreadCrumb(l, i))}
             </Breadcrumbs>
-            <Choices {...this.state.languages} />
+            <Choices
+              key="choice"
+              values={this.state.languages.values}
+              selected={this.state.languages.selected}
+              callback={this.state.languageChanged.bind(this)}
+            />
           </header>
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Home locale={this.state.languages.selected} />
             </Route>
             <Route path="/about">
               <About />

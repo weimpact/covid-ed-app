@@ -11,12 +11,9 @@ class Choices extends Component {
       selected: props.selected,
       values: props.values,
       label: props.label,
+      callback: props.callback,
     };
   }
-
-  handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    this.setState({ value: event.target.value });
-  };
 
   componentWillReceiveProps(props) {
     this.setState({
@@ -29,17 +26,17 @@ class Choices extends Component {
   render() {
     return (
       <div className="choices">
-        <Typography variant="body2" color="textPrimary" gutterButton>
+        <Typography variant="body2" color="textPrimary">
           {this.state.label}
         </Typography>
         <Select
           labelId="choices-select-label"
           id="choices-select"
           value={this.state.selected}
-          onChange={this.handleChange}
+          onChange={this.state.callback}
         >
           {this.state.values.map((l, i) => (
-            <MenuItem key={i} value={l.value}>
+            <MenuItem key={l.value} value={l.value}>
               {" "}
               {l.name}{" "}
             </MenuItem>

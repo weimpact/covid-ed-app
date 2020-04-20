@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Fact, Myth } from "./Fact.js";
 import "./css/FactsMyths.css";
 
-import config from "./config.js";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -12,31 +11,11 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
 class FactsMyths extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      rows: [],
+      rows: props.rows,
     };
-  }
-
-  fetchFactsMyths() {
-    var url = config.backendApi + "/facts_myths";
-
-    fetch(url)
-      .then((response) => response.json())
-      .then(
-        (data) => {
-          this.setState({ rows: data });
-        },
-
-        (error) => {
-          console.log("error! fetching api" + url + " " + error);
-        }
-      );
-  }
-
-  componentDidMount() {
-    this.fetchFactsMyths();
   }
 
   render() {
