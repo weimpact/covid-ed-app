@@ -1,34 +1,39 @@
 import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/App.css";
+import Home from "./Home.js";
+import About from "./About.js";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
-import Link from "@material-ui/core/Link";
-import { loadLanguages } from "./scripts/client.js";
 import { Choices } from "./Choices.js";
+import { loadLanguages } from "./scripts/client.js";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      links: ["Home", "About Us", "Volunteer"],
       languages: {
         values: [],
         label: "",
         selected: "",
       },
+      pages: [
+        {
+          path: "/",
+          view: Home,
+          display: "Home",
+        },
+        {
+          path: "/about",
+          view: About,
+          display: "About",
+        },
+        {
+          path: "/voluneteer",
+          view: About,
+          display: "Volunteer",
+        },
+      ],
     };
-  }
-
-  handleClick(event) {
-    event.preventDefault();
-    console.info("You clicked a breadcrumb.");
-  }
-  renderBreadCrumb(link, i) {
-    return (
-      <Link color="inherit" href="/" onClick={this.handleClick} key={i}>
-        {link}
-      </Link>
-    );
   }
 
   componentDidMount() {
@@ -43,15 +48,36 @@ class App extends Component {
     });
   }
 
+  renderBreadCrumb(link, i) {
+    return (
+      <Link color="inherit" to={link.path} key={i}>
+        {link.display}
+      </Link>
+    );
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <Breadcrumbs aria-label="breadcrumb">
-            {this.state.links.map((l, i) => this.renderBreadCrumb(l, i))}
-          </Breadcrumbs>
-          <Choices {...this.state.languages} />
-        </header>
+        <Router>
+          <header className="App-header">
+            <Breadcrumbs aria-label="breadcrumb">
+              {this.state.pages.map((l, i) => this.renderBreadCrumb(l, i))}
+            </Breadcrumbs>
+            <Choices {...this.state.languages} />
+          </header>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/volunteer">
+              <About />
+            </Route>
+          </Switch>
+        </Router>
       </div>
     );
   }

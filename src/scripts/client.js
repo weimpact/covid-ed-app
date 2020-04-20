@@ -25,7 +25,7 @@ function loadCountriesData(filter, callback) {
 function loadCountriesGrowth(callback) {
   var url =
     config.backendApi +
-    "/countries/cases/aggregated?countries=IN,ID&interval=weekly";
+    "/countries/cases/aggregated?countries=IN,ID,IT&interval=weekly";
 
   return function load() {
     fetch(url)

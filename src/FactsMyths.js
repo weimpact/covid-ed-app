@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import { Fact, Myth } from "./Fact.js";
 import "./css/FactsMyths.css";
 
@@ -72,4 +71,4 @@ class FactsMyths extends Component {
   }
 }
 
-ReactDOM.render(<FactsMyths />, document.getElementById("facts_myths"));
+export default FactsMyths;

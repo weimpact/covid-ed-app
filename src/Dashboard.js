@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import "./css/Dashboard.css";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -118,4 +117,4 @@ class Canvas extends Component {
   }
 }
 
-ReactDOM.render(<Dashboard />, document.getElementById("dashboard"));
+export default Dashboard;
