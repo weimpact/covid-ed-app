@@ -2,7 +2,7 @@ import _ from "lodash";
 
 function collectConfirmed(data) {
   var values = data.Countries.map((d, k) => d.TotalConfirmed);
-  var labels = data.Countries.map((d, k) => d.Country);
+  var labels = data.Countries.map((d, k) => d.Slug);
   return {
     title: "countries total cases (top)",
     values: values,
@@ -12,9 +12,12 @@ function collectConfirmed(data) {
 
 function collectCountriesDeath(data) {
   var values = data.Countries.map((d, k) => d.TotalDeaths);
-  var labels = data.Countries.map((d, k) => d.Country);
+  var labels = data.Countries.map((d, k) => d.Slug);
   return {
-    title: "countries deaths (top)",
+    title:
+      "countries deaths (total: " +
+      data.Global.TotalDeaths.toLocaleString() +
+      " )",
     values: values,
     labels: labels,
   };

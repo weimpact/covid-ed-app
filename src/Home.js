@@ -29,6 +29,11 @@ class Home extends Component {
     }
   }
 
+  componentDidMount() {
+    this.fetchFactsMyths();
+    console.log("asdfdsf", this.state);
+  }
+
   fetchFactsMyths() {
     var url = new URL(config.backendApi + "/facts_myths");
     url.searchParams.set("locale", this.state.locale);

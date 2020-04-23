@@ -28,9 +28,9 @@ class About extends Component {
     };
   }
 
-  renderExpansion(cont) {
+  renderExpansion(k, cont) {
     return (
-      <ExpansionPanel expanded={true}>
+      <ExpansionPanel expanded={true} key={k}>
         <ExpansionPanelSummary
           aria-controls="panel1a-content"
           id="panel1a-header"
@@ -48,7 +48,7 @@ class About extends Component {
     return (
       <Container>
         <div className="about_section">
-          {this.state.content.map((c, i) => this.renderExpansion(c))}
+          {this.state.content.map((c, i) => this.renderExpansion(i, c))}
         </div>
       </Container>
     );

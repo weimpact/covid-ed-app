@@ -18,6 +18,10 @@ class FactsMyths extends Component {
     };
   }
 
+  static getDerivedStateFromProps(props, state) {
+    return { rows: props.rows };
+  }
+
   render() {
     return (
       <div className="container">
