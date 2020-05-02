@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./css/App.css";
 import Home from "./Home.js";
 import About from "./About.js";
+import Support from "./Support.js";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import { Choices } from "./Choices.js";
@@ -29,9 +30,9 @@ class App extends Component {
           display: "About",
         },
         {
-          path: "/voluneteer",
-          view: About,
-          display: "Volunteer",
+          path: "/support",
+          view: Support,
+          display: "Support",
         },
       ],
     };
@@ -54,7 +55,6 @@ class App extends Component {
       languages: { ...this.state.languages, selected: event.target.value },
     });
   }
-
   renderBreadCrumb(link, i) {
     return (
       <Link color="inherit" to={link.path} key={i}>
@@ -85,8 +85,8 @@ class App extends Component {
             <Route path="/about">
               <About />
             </Route>
-            <Route path="/volunteer">
-              <About />
+            <Route path="/support">
+              <Support />
             </Route>
           </Switch>
         </Router>

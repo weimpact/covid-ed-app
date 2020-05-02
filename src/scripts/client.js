@@ -1,4 +1,5 @@
 import config from "../config.js";
+import axios from "axios";
 
 function loadCountriesData(filter, callback) {
   var url = new URL(config.backendApi + "/countries/cases");
@@ -54,4 +55,14 @@ function loadLanguages(callback) {
     );
 }
 
-export { loadCountriesData, loadCountriesGrowth, loadLanguages };
+function loadFunds(callback) {
+  var url = config.backendApi + "/funds";
+  axios
+    .get(url)
+    .then((response) => {
+      callback(response.data);
+    })
+    .catch((error) => console.log("error loading funds", error));
+}
+
+export { loadCountriesData, loadCountriesGrowth, loadLanguages, loadFunds };

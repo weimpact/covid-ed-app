@@ -21,6 +21,10 @@ class About extends Component {
           description: `We're volunteers not associated with any org, and building an opensource solution`,
         },
         {
+          title: "Is it official Data?",
+          description: `The data is a collection and aggregated from different source, metrics are backed from https://api.covid19api.com/ and use the information after validating yourself.`,
+        },
+        {
           title: "Disclaimer",
           description: `The source's collected from various sites/blogs/knowledge is our own and we still would suggest user to verify and take it as per their state`,
         },

@@ -98,7 +98,7 @@ class Dashboard extends Component {
       <div className="container dashboard">
         <Grid container className="dashboard-row row" spacing={2}>
           <Grid item xs={6}>
-            <div>Something</div>
+            <div>Dashboard</div>
             {this.renderCanvas(
               "top_countries",
               "Top Countries Total Cases",
