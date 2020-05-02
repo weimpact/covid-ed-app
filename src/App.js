@@ -43,7 +43,6 @@ class App extends Component {
       var values = data.map((d) => {
         return { name: d.language, value: d.tag };
       });
-      console.log("heree???");
       currComp.setState({
         languages: { values: values, label: "Language:", selected: "en-US" },
       });

@@ -31,7 +31,6 @@ class Home extends Component {
 
   componentDidMount() {
     this.fetchFactsMyths();
-    console.log("asdfdsf", this.state);
   }
 
   fetchFactsMyths() {

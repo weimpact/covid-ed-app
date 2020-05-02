@@ -22,10 +22,10 @@ function loadCountriesData(filter, callback) {
   };
 }
 
-function loadCountriesGrowth(callback) {
-  var url =
-    config.backendApi +
-    "/countries/cases/aggregated?countries=IN,ID,IT&interval=weekly";
+function loadCountriesGrowth(countries, callback) {
+  var url = new URL(config.backendApi + "/countries/cases/aggregated");
+  url.searchParams.set("interval", "weekly");
+  url.searchParams.set("countries", countries);
 
   return function load() {
     fetch(url)

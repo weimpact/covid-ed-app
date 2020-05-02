@@ -2,7 +2,7 @@ var Chart = require("chart.js");
 
 function drawBarChart(id, data) {
   var ctx = document.getElementById(id);
-  new Chart(ctx, {
+  return new Chart(ctx, {
     type: "bar",
     data: {
       labels: data.labels,
@@ -22,7 +22,7 @@ function drawBarChart(id, data) {
 }
 
 function drawLineChart(id, data) {
-  new Chart(document.getElementById(id), {
+  return new Chart(document.getElementById(id), {
     type: "line",
     data: {
       labels: data.labels,
@@ -38,8 +38,14 @@ function drawLineChart(id, data) {
   });
 }
 
+function updateLineChart(chart, data) {
+  chart.data.labels = data.labels;
+  chart.data.datasets = data.datasets;
+  chart.update();
+}
+
 function drawPieChart(id, data) {
-  new Chart(document.getElementById(id), {
+  return new Chart(document.getElementById(id), {
     type: "pie",
     data: {
       labels: data.labels,
@@ -69,4 +75,4 @@ function drawPieChart(id, data) {
   });
 }
 
-export { drawBarChart, drawLineChart, drawPieChart };
+export { drawBarChart, drawLineChart, drawPieChart, updateLineChart };
