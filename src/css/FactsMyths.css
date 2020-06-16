@@ -13,10 +13,13 @@ table div.title {
 }
 
 table div.description {
-  font-size: medium;
+  font-size: large;
+  margin: 10px;
 }
 
 table ul {
   list-style-type: none;
-  font-size: smaller;
+  line-height: 1.8;
+  margin: 1px;
+  font-style: italic;
 }

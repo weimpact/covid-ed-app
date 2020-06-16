@@ -121,7 +121,7 @@ class Dashboard extends Component {
             />
             {this.renderCanvas(
               "countries_growth",
-              "countries growth",
+              "weekly countries growth",
               loadCountriesGrowth(
                 "ID,IN",
                 this.loadCountriesGrowth("countries_growth")

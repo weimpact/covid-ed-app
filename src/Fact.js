@@ -11,7 +11,7 @@ const Fact = (props) => {
         {props.articles
           ? props.articles.map((art, i) => (
               <li key={i}>
-                <a href="{art.url}">{art.title}</a>
+                <a href={art.url}>{art.title}</a>
               </li>
             ))
           : ""}
