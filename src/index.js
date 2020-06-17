@@ -3,6 +3,11 @@ import ReactDOM from "react-dom";
 import "./css/index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import config from "./config.js";
+import ReactGA from "react-ga";
+
+ReactGA.initialize(config.trackingID);
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 ReactDOM.render(
   <React.StrictMode>
