@@ -3,6 +3,7 @@ import "./css/App.css";
 import Home from "./Home.js";
 import About from "./About.js";
 import Support from "./Support.js";
+import Hospitals from "./Hospitals.js";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import { Choices } from "./Choices.js";
@@ -33,6 +34,11 @@ class App extends Component {
           path: "/support",
           view: Support,
           display: "Support",
+        },
+        {
+          path: "/hospitals",
+          view: Hospitals,
+          display: "Hospitals",
         },
       ],
     };
@@ -87,6 +93,9 @@ class App extends Component {
             </Route>
             <Route path="/support">
               <Support />
+            </Route>
+            <Route path="/hospitals">
+              <Hospitals />
             </Route>
           </Switch>
         </Router>
