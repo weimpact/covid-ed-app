@@ -95,20 +95,10 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="container dashboard">
-        <Grid container className="dashboard-row row" spacing={2}>
-          <Grid item xs={6}>
-            <div>Dashboard</div>
-            {this.renderCanvas(
-              "top_countries",
-              "Top Countries Total Cases",
-              loadCountriesData(
-                { top: 10 },
-                this.loadTopCountriesData("top_countries")
-              )
-            )}
-          </Grid>
-          <Grid item xs={6}>
+      <div class="container">
+        <div className="columns is-multiline dashboard">
+          <div className="column is-half">Dashboard</div>
+          <div className="column is-half">
             <MultipleChoice
               key="country_choices"
               placeholder="Countries"
@@ -119,6 +109,18 @@ class Dashboard extends Component {
               onChange={this.countriesChanged.bind(this)}
               onClose={this.refreshCountriesGrowth.bind(this)}
             />
+          </div>
+          <div className="column is-half">
+            {this.renderCanvas(
+              "top_countries",
+              "Top Countries Total Cases",
+              loadCountriesData(
+                { top: 10 },
+                this.loadTopCountriesData("top_countries")
+              )
+            )}
+          </div>
+          <div className="column is-half">
             {this.renderCanvas(
               "countries_growth",
               "weekly countries growth",
@@ -127,23 +129,23 @@ class Dashboard extends Component {
                 this.loadCountriesGrowth("countries_growth")
               )
             )}
+          </div>
+          <Grid container className="countries_with_deaths" spacing={2}>
+            <Grid item xs={6} className="countries_with_deaths_desc">
+              <Introduction />
+            </Grid>
+            <Grid item xs={6}>
+              {this.renderCanvas(
+                "countries_with_deaths",
+                "Countries With Deaths",
+                loadCountriesData(
+                  { deaths: true },
+                  this.loadCountriesDeath("countries_with_deaths")
+                )
+              )}
+            </Grid>
           </Grid>
-        </Grid>
-        <Grid container className="countries_with_deaths" spacing={2}>
-          <Grid item xs={6} className="countries_with_deaths_desc">
-            <Introduction />
-          </Grid>
-          <Grid item xs={6}>
-            {this.renderCanvas(
-              "countries_with_deaths",
-              "Countries With Deaths",
-              loadCountriesData(
-                { deaths: true },
-                this.loadCountriesDeath("countries_with_deaths")
-              )
-            )}
-          </Grid>
-        </Grid>
+        </div>
       </div>
     );
   }
@@ -166,10 +168,10 @@ class Canvas extends Component {
 
   render() {
     return (
-      <div className="col">
-        <Paper variant="outlined">
+      <div class="columns">
+        <div class="column">
           <canvas id={this.state.id}></canvas>
-        </Paper>
+        </div>
       </div>
     );
   }
