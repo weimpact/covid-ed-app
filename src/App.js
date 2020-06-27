@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import { Choices } from "./Choices.js";
 import { loadLanguages } from "./scripts/client.js";
+import Banner from "./Banner.js";
 
 class App extends Component {
   constructor() {
@@ -61,22 +62,13 @@ class App extends Component {
       languages: { ...this.state.languages, selected: event.target.value },
     });
   }
-  renderBreadCrumb(link, i) {
-    return (
-      <Link color="inherit" to={link.path} key={i}>
-        {link.display}
-      </Link>
-    );
-  }
 
   render() {
     return (
       <div className="App">
+        <Banner pages={this.state.pages} />
         <Router>
           <header className="App-header">
-            <Breadcrumbs aria-label="breadcrumb">
-              {this.state.pages.map((l, i) => this.renderBreadCrumb(l, i))}
-            </Breadcrumbs>
             <Choices
               key="choice"
               values={this.state.languages.values}

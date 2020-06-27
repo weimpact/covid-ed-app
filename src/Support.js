@@ -23,15 +23,21 @@ class Support extends Component {
   }
 
   renderFund(fund, i) {
-    return <Fund {...fund} key={i} />;
+    return (
+      <div className="column is-half">
+        <Fund {...fund} key={i} />;
+      </div>
+    );
   }
 
   render() {
     return (
       <div className="fund_information">
-        <Container>
-          {this.state.funds.map((fund, i) => this.renderFund(fund, i))}
-        </Container>
+        <div className="container">
+          <div className="columns is-multiline">
+            {this.state.funds.map((fund, i) => this.renderFund(fund, i))}
+          </div>
+        </div>
       </div>
     );
   }

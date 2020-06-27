@@ -130,21 +130,19 @@ class Dashboard extends Component {
               )
             )}
           </div>
-          <Grid container className="countries_with_deaths" spacing={2}>
-            <Grid item xs={6} className="countries_with_deaths_desc">
-              <Introduction />
-            </Grid>
-            <Grid item xs={6}>
-              {this.renderCanvas(
-                "countries_with_deaths",
-                "Countries With Deaths",
-                loadCountriesData(
-                  { deaths: true },
-                  this.loadCountriesDeath("countries_with_deaths")
-                )
-              )}
-            </Grid>
-          </Grid>
+          <div className="column is-half">
+            <Introduction />
+          </div>
+          <div className="countries_with_deaths column is-half">
+            {this.renderCanvas(
+              "countries_with_deaths",
+              "Countries With Deaths",
+              loadCountriesData(
+                { deaths: true },
+                this.loadCountriesDeath("countries_with_deaths")
+              )
+            )}
+          </div>
         </div>
       </div>
     );

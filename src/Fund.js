@@ -1,13 +1,5 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import ButtonBase from "@material-ui/core/ButtonBase";
 
 const useStyles = makeStyles({
   root: {},
@@ -22,27 +14,31 @@ const Fund = (props) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardContent>
-          <Typography gutterBottom variant="h4" component="h2">
-            {props.title}
-          </Typography>
-          <Typography variant="body" color="textSecondary" component="p">
-            {props.description}
-          </Typography>
-        </CardContent>
-        <CardMedia className={classes.media} image={props.image_url} />
-      </CardActionArea>
-      <CardActions>
-        <Button size="large" color="primary" href={props.donate_url}>
-          Donate
-        </Button>
-        <Button size="large" color="primary" href={props.website}>
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
+    <div className="card">
+      <header className="card-header">
+        <p className="card-header-title"> {props.title} </p>
+      </header>
+      <div className="card-content">
+        <div className="card-image">
+          <figure className="image is-4">
+            <img src={props.image_url} alt={props.website} />
+          </figure>
+        </div>
+        <div className="content has-text-centered">
+          <p> {props.description} </p>
+        </div>
+      </div>
+      <footer className="card-footer">
+        <a className="card-footer-item" href={props.donate_url}>
+          {" "}
+          Donate{" "}
+        </a>
+        <a className="card-footer-item" href={props.website}>
+          {" "}
+          Know More{" "}
+        </a>
+      </footer>
+    </div>
   );
 };
 
