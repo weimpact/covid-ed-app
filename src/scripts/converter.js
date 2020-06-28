@@ -30,7 +30,7 @@ function collectCountriesCasesGrowth(data) {
     return { data: d.Cases, label: d.Country, borderColor: "#3e95cd" };
   });
   var res = {
-    title: "countries growth",
+    title: "countries growth (weekly)",
     datasets: datasets,
     labels: labels,
   };
