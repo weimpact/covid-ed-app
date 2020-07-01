@@ -6,6 +6,7 @@ import Introduction from "./Introduction.js";
 import axios from "axios";
 import { MultipleChoice } from "./Choices.js";
 import config from "./config.js";
+import Media from "./media.js";
 
 import { loadCountriesData, loadCountriesGrowth } from "./scripts/client.js";
 import {
@@ -95,7 +96,8 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div class="container">
+      <div className="container">
+        <Media />
         <div className="columns is-multiline dashboard">
           <div className="column is-half">Dashboard</div>
           <div className="column is-half">

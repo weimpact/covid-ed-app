@@ -65,4 +65,23 @@ function loadFunds(callback) {
     .catch((error) => console.log("error loading funds", error));
 }
 
-export { loadCountriesData, loadCountriesGrowth, loadLanguages, loadFunds };
+function loadMedias(callback) {
+  var url = new URL(config.backendApi + "/media");
+  url.searchParams.set("type", "image");
+  url.searchParams.set("category", "all");
+
+  axios
+    .get(url)
+    .then((response) => {
+      callback(response.data);
+    })
+    .catch((error) => console.log("error loading media", error));
+}
+
+export {
+  loadCountriesData,
+  loadCountriesGrowth,
+  loadLanguages,
+  loadFunds,
+  loadMedias,
+};
