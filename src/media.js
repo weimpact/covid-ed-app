@@ -8,19 +8,19 @@ class Media extends Component {
     super();
     this.state = {
       medias: [],
+      summary: props.summary,
     };
   }
 
   refreshMedia(data) {
-    console.log("loaded media...", data);
-    this.state.medias = data.media;
+    this.setState({ medias: data.media });
   }
 
   componentWillMount() {
     loadMedias(this.refreshMedia.bind(this));
   }
 
-  render() {
+  renderSummary() {
     return (
       <SimpleBar>
         <nav className="level">
@@ -29,7 +29,10 @@ class Media extends Component {
               <div className="level-item" key={i}>
                 <div className="box">
                   <figure className="image is-128x128">
-                    <img src={m.url} />
+                    <a href="/support">
+                      {" "}
+                      <img src={m.url} />{" "}
+                    </a>
                   </figure>
                   <div className="content">{m.title}</div>
                 </div>
@@ -46,6 +49,35 @@ class Media extends Component {
         </nav>
       </SimpleBar>
     );
+  }
+
+  renderDetailed() {
+    return (
+      <div className="columns is-multiline">
+        {this.state.medias.map((m, i) => (
+          <div className="column is-one-third" key={m.url}>
+            <div className="box">
+              <figure className="image ">
+                <a href="#">
+                  {" "}
+                  <img src={m.url} />{" "}
+                </a>
+              </figure>
+              <div className="content">{m.title}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  render() {
+    const isSummary = this.state.summary;
+    console.log("i'm here....", isSummary);
+    if (isSummary) {
+      return this.renderSummary();
+    }
+    return this.renderDetailed();
   }
 }
 

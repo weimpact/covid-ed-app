@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./css/Dashboard.css";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
 import Introduction from "./Introduction.js";
 import axios from "axios";
 import { MultipleChoice } from "./Choices.js";
@@ -94,24 +92,45 @@ class Dashboard extends Component {
     this.loadCountries();
   }
 
+  renderDashboardOptions() {
+    return (
+      <div className="column is-full">
+        <nav className="level">
+          <div className="level-left" />
+          <div className="level-right">
+            <p className="level-item">Countries:</p>
+            <div className="level-item">
+              <MultipleChoice
+                key="country_choices"
+                placeholder="Countries"
+                multiple={true}
+                values={this.state.allCountries}
+                selected={this.state.selectedCountries}
+                label="Countries to compare"
+                onChange={this.countriesChanged.bind(this)}
+                onClose={this.refreshCountriesGrowth.bind(this)}
+              />
+            </div>
+            <div className="level-item field">
+              <input
+                id="cases_aggregation"
+                type="checkbox"
+                className="switch"
+              />
+              <label for="cases_aggregation">Weekly</label>
+            </div>
+          </div>
+        </nav>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="container">
-        <Media />
+        <Media summary={true} />
         <div className="columns is-multiline dashboard">
-          <div className="column is-half">Dashboard</div>
-          <div className="column is-half">
-            <MultipleChoice
-              key="country_choices"
-              placeholder="Countries"
-              multiple={true}
-              values={this.state.allCountries}
-              selected={this.state.selectedCountries}
-              label="Countries to compare"
-              onChange={this.countriesChanged.bind(this)}
-              onClose={this.refreshCountriesGrowth.bind(this)}
-            />
-          </div>
+          {this.renderDashboardOptions()}
           <div className="column is-half">
             {this.renderCanvas(
               "top_countries",

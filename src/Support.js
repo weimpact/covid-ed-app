@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Fund from "./Fund.js";
 import { loadFunds } from "./scripts/client.js";
-import Container from "@material-ui/core/Container";
+import Media from "./media.js";
 
 class Support extends Component {
   constructor() {
@@ -37,6 +37,9 @@ class Support extends Component {
           <div className="columns is-multiline">
             {this.state.funds.map((fund, i) => this.renderFund(fund, i))}
           </div>
+        </div>
+        <div className="container">
+          <Media summary={false} />
         </div>
       </div>
     );

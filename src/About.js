@@ -39,7 +39,7 @@ class About extends Component {
 
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <div className="about_section">
           {this.state.content.map((c, i) => this.renderExpansion(i, c))}
         </div>
