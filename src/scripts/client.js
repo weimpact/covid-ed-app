@@ -3,10 +3,10 @@ import axios from "axios";
 
 function loadCountriesData(filter, callback) {
   var url = new URL(config.backendApi + "/countries/cases");
-  if (filter.top != undefined) {
+  if (filter.top !== undefined) {
     url.searchParams.set("top", filter.top);
   }
-  if (filter.deaths != undefined) {
+  if (filter.deaths !== undefined) {
     url.searchParams.set("deaths", filter.deaths);
   }
 

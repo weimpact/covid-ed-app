@@ -39,7 +39,7 @@ class Choices extends Component {
           onChange={this.state.callback}
         >
           {this.state.values.map((l, i) => (
-            <MenuItem key={l.value} value={l.value}>
+            <MenuItem key={i} value={l.value}>
               {" "}
               {l.name}{" "}
             </MenuItem>
@@ -59,15 +59,15 @@ class MultipleChoice extends Component {
       values: props.values,
       placeholder: props.placeholder,
       selected: props.selected,
-      key: props.key,
+      id: props.id,
     };
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (state.values.length != props.values.length) {
+    if (state.values.length !== props.values.length) {
       return { values: props.values };
     }
-    if (state.selected.length != props.selected.length) {
+    if (state.selected.length !== props.selected.length) {
       return { selected: props.selected };
     }
     return null;
@@ -80,7 +80,7 @@ class MultipleChoice extends Component {
           {this.state.label}
         </Typography>
         <Select
-          key={this.state.key}
+          id={this.state.id}
           multiple
           labelId="multiple-choices-select-label"
           value={this.state.selected}

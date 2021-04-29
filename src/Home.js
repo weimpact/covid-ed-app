@@ -16,7 +16,7 @@ class Home extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.locale != state.locale) {
+    if (props.locale !== state.locale) {
       return { locale: props.locale, refresh: true };
     }
     return null;

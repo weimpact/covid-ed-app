@@ -49,7 +49,7 @@ class Dashboard extends Component {
     if (chart != null) {
       updateLineChart(chart, res);
     } else {
-      var chart = drawLineChart(id, res);
+      chart = drawLineChart(id, res);
       this.setState({
         graphs: { ...this.state.graphs, growthLineChart: chart },
       });
@@ -101,7 +101,7 @@ class Dashboard extends Component {
             <p className="level-item">Countries:</p>
             <div className="level-item">
               <MultipleChoice
-                key="country_choices"
+                id="country_choices"
                 placeholder="Countries"
                 multiple={true}
                 values={this.state.allCountries}
@@ -117,7 +117,7 @@ class Dashboard extends Component {
                 type="checkbox"
                 className="switch"
               />
-              <label for="cases_aggregation">Weekly</label>
+              <label className="label">Weekly</label>
             </div>
           </div>
         </nav>
@@ -187,8 +187,8 @@ class Canvas extends Component {
 
   render() {
     return (
-      <div class="columns">
-        <div class="column">
+      <div className="columns">
+        <div className="column">
           <canvas id={this.state.id}></canvas>
         </div>
       </div>
