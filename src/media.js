@@ -31,7 +31,7 @@ class Media extends Component {
                   <figure className="image is-128x128">
                     <a href="/support">
                       {" "}
-                      <img src={m.url} />{" "}
+                      <img alt="support" src={m.url} />{" "}
                     </a>
                   </figure>
                   <div className="content">{m.title}</div>
@@ -58,9 +58,9 @@ class Media extends Component {
           <div className="column is-one-third" key={m.url}>
             <div className="box">
               <figure className="image ">
-                <a href="#">
+                <a href="/#">
                   {" "}
-                  <img src={m.url} />{" "}
+                  <img alt="media" src={m.url} />{" "}
                 </a>
               </figure>
               <div className="content">{m.title}</div>
@@ -73,7 +73,6 @@ class Media extends Component {
 
   render() {
     const isSummary = this.state.summary;
-    console.log("i'm here....", isSummary);
     if (isSummary) {
       return this.renderSummary();
     }

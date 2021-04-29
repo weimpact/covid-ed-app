@@ -1,18 +1,6 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles({
-  root: {},
-  media: {
-    margin: "auto",
-    width: "90%",
-    height: 600,
-  },
-});
 
 const Fund = (props) => {
-  const classes = useStyles();
-
   return (
     <div className="card">
       <header className="card-header">
